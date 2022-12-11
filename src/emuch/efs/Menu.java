@@ -12,7 +12,7 @@ class Menu {
     GameInterface gameinterface;
     Game game;
     int x = 1280;
-    int y = 1024;
+    int y = 720;
     
     Menu() {
         game = new Game();
@@ -23,7 +23,7 @@ class Menu {
         menupanel = new JPanel();
         menupanel.setSize(x, y*5/100);
         menupanel.setLocation(0, 0);
-        menupanel.setBackground(new Color(255,0,0));
+        menupanel.setBackground(new Color(128,128,128));
         gameinterface = new GameInterface(x,y);
         gameinterface.setSize(x, y*95/100);
         gameinterface.setLocation(0,y*5/100);
