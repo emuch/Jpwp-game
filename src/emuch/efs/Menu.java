@@ -22,13 +22,13 @@ class Menu {
         menu.setResizable(false);
         menu.setLayout(null);
         
-        gameinterface = new GameInterface(this);
-        gameinterface.setSize(x, y*95/100);
-        gameinterface.setLocation(0,y*5/100);
-        
         menupanel = new MenuPanel(this);
         menupanel.setSize(x, y*5/100);
         menupanel.setLocation(0, 0);
+
+        gameinterface = new GameInterface(this);
+        gameinterface.setSize(x, y*95/100);
+        gameinterface.setLocation(0,y*5/100);
 
         menu.add(menupanel);
         menu.add(gameinterface);
