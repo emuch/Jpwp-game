@@ -22,7 +22,7 @@ class MenuPanel extends JPanel{
 
     Image button_menu;
     Image button_turn;
-    JLabel infoLabel;  //tura
+    JLabel infoLabel;  //licznik tur
     
     MenuPanel(Menu menu) {
         this.menu = menu;
@@ -36,12 +36,12 @@ class MenuPanel extends JPanel{
         this.setLayout(null);
         this.infoLabel = new JLabel("Tura:1 Tydzień:1 1-1263");
         this.infoLabel.setLocation(0,0);            //lokalizacja Jlabela z turami
-        this.infoLabel.setSize((int) dx,(int) dy);
+        this.infoLabel.setSize((int) (x*0.3),(int) dy);
         this.add(this.infoLabel);
         
         ImageIcon button_menu = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_menu.png");
         this.button_menu = button_menu.getImage();
-        ImageIcon button_turn = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images alpha/turn.png");
+        ImageIcon button_turn = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_turn.png");
         this.button_turn = button_turn.getImage();
         
         this.addMouseListener(new MouseAdapter() {
@@ -50,11 +50,9 @@ class MenuPanel extends JPanel{
                 double giy = (double)e.getY();
                 if (menu.gameinterface.show_buttons==false){
                     if (gix > xm && gix < xm+dx && giy > ym && giy < ym+dy) {
-                        System.out.println(1);
                         buttonMenu();
                     }
                     if (gix > xt && gix < xt+dx && giy > ym && giy < ym+dy) {
-                        System.out.println(2);
                         buttonTurn();
                     }
                 }
@@ -80,12 +78,12 @@ class MenuPanel extends JPanel{
         Graphics2D g2 = (Graphics2D) g;
         if(this.menu.gameinterface.show_buttons == false){
             g2.setColor(new Color(212, 217,219));                   //kolor panelu
-            g2.fillRect(110, 0, this.x,(int) this.y);                        //kolorowanie panelu po kliknięciu start
+            //g2.fillRect(510, 0, this.x,(int) this.y);                 //kolorowanie panelu po kliknięciu start
             g2.drawImage(this.button_menu, (int)xm, 0, null);  //przycisk menu
-            g2.drawImage(this.button_turn,(int) xt,0, null);
+            g2.drawImage(this.button_turn,(int) xt,0, null);   //przycisk turn
          }else if(this.menu.gameinterface.show_buttons == true){
             g2.setColor(new Color(212, 217,219));                   //kolor panelu
-            g2.fillRect(110, 0, this.x,(int) this.y);                         //kolorowanie panelu dla włączenia gry
+            //g2.fillRect(510, 0, this.x,(int) this.y);                 //kolorowanie panelu dla włączenia gry
          }
     }
 }
