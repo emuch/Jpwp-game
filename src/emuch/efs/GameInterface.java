@@ -91,16 +91,16 @@ class GameInterface extends JPanel {
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(new Color(212, 217,219));                   //kolor panelu
-        //g2.fillRect(0, 0, this.x,(int) this.y);       
+        g2.setColor(new Color(212, 217,219));               //kolor panelu
+        g2.fillRect(0, 0, this.x,(int) this.y);       
         if(this.show_buttons == true){
-        //g2.drawImage(this.map_blur, 0, 0, null);     //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
+        g2.drawImage(this.map_blur, 0, 0, null);     //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
         g2.drawImage(logo, 320, 30, null);           //logo gry na ekranie startowym
         g2.drawImage(this.button_start, (int)xpos, (int)(ypos+b1yrel), null);     //przycisk start
         g2.drawImage(this.button_settings, (int)xpos, (int)(ypos+b2yrel), null);  //przycisk settings
         g2.drawImage(this.button_exit, (int)xpos, (int)(ypos+b3yrel), null);      //przycisk exit
         } else if(this.show_buttons == false){
-        //g2.drawImage(this.background, 0, 0, null);    //tło gry po kliknięciu start
+        g2.drawImage(this.background, 0, 0, null);   //tło gry po kliknięciu start
         }
     }
 }
