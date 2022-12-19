@@ -3,6 +3,7 @@ package emuch.efs;
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 class Music{
     static void playMusic() {
@@ -14,6 +15,9 @@ class Music{
         try {
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(Sound));
+            FloatControl gainControl = 
+            (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-6.0f);
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
@@ -23,4 +27,5 @@ class Music{
 }
 
 //To Do:
-//wyłaczenie muzyki przez kilknięcie "X". 
+//wyłaczenie muzyki przez kilknięcie "X".
+//ściszenie muzyki o 75% - 6dB                  //DONE
