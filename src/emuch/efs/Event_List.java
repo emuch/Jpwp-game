@@ -5,8 +5,7 @@ class Event_List {
     ArrayList<Event> list;
     Event_List(Menu menu) {
         list = new ArrayList<Event>();
-        list.add(new Event1(menu));
-        list.add(new Event1(menu));
+        list.add(new Event1(menu)); // dodawanie eventów
     }
 }
 class Event1 extends Event{
@@ -20,6 +19,6 @@ class Event1 extends Event{
     }
     @Override
     void run(){
-                
+        this.menu.menupanel.infoLabel.setText("xD");
     }
 }
