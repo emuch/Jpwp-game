@@ -34,12 +34,12 @@ class MenuPanel extends JPanel{
         this.dx = x*(0.1);       //rozmiar 2*x przycisku panelu
         this.dy = y*(0.05);      //rozmiar y przycisku panelu
         
+        ImageIcon button_upgrade = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_upgrade.png");
+        this.button_upgrade = button_upgrade.getImage();
         ImageIcon button_menu = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_menu.png");
         this.button_menu = button_menu.getImage();
         ImageIcon button_turn = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_turn.png");
         this.button_turn = button_turn.getImage();
-        ImageIcon button_upgrade = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_turn.png");
-        this.button_upgrade = button_upgrade.getImage();
         
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
