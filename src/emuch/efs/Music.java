@@ -17,7 +17,7 @@ class Music{
             clip.open(AudioSystem.getAudioInputStream(Sound));
             FloatControl gainControl = 
             (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-6.0f);
+            gainControl.setValue(-20);
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
