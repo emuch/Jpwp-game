@@ -1,8 +1,8 @@
 package emuch.efs;
 
 abstract class Event {
-    double probability;
     Menu menu;
+    boolean loud;
     Event (Menu menu) {
         this.menu = menu;
     }
