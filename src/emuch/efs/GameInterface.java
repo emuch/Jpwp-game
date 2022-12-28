@@ -3,8 +3,8 @@ package emuch.efs;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-//import java.awt.Color;
 import java.awt.Image;
+//import javax.naming.spi.DirStateFactory;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,6 +19,7 @@ class GameInterface extends JPanel {
     double b1yrel;
     double b2yrel;
     double b3yrel;
+    double b4yrel;
     double xpos;
     double ypos;
     double dx;
@@ -30,8 +31,13 @@ class GameInterface extends JPanel {
     Image button_start;
     Image button_settings;
     Image button_exit;
+    Image button_easy;
+    Image button_normal;
+    Image button_hard;
+    Image button_back;
 
     boolean show_buttons;
+    boolean show_settings;
 
     GameInterface (Menu menu){
         this.menu = menu;
@@ -43,13 +49,15 @@ class GameInterface extends JPanel {
         this.b1yrel = -(dy)/2-(dy)*2;    //Guzik pierwszy menu w osi y
         this.b2yrel = -(dy)/2;           //Guzik drugi w osi y
         this.b3yrel = -(dy)/2+(dy)*2;    //Guzik trzeci w osi y
+        this.b4yrel = -(dy)/2+(dy)*4;    //Guzik trzeci w osi y
         this.xpos = (this.x-this.dx)/2;  //Pozycja guzika w x od lewej krawędzi (512)
         this.ypos = (this.y-this.dy)/2;  //Pozycja guzika w y od góry (342)
         this.show_buttons = true;        //widoczność przycisków głównego menu
+        this.show_settings = false;      //widoczność przycisków settings
         
         ImageIcon map_blur = new ImageIcon(/*menu.indirectPathimages + */"C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/map_blur.png");
         this.map_blur = map_blur.getImage();
-        ImageIcon logo = new ImageIcon("/C:/Users/Emus/Desktop/Programy%20Studia/JAVA%20JDK/Empirefromscratch/images/logo.png");
+        ImageIcon logo = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/logo.png");
         this.logo = logo.getImage();
         ImageIcon button_start = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_start.png");
         this.button_start = button_start.getImage();
@@ -59,6 +67,14 @@ class GameInterface extends JPanel {
         this.button_exit = button_exit.getImage();
         ImageIcon background = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/map.png");
         this.background = background.getImage();
+        ImageIcon button_easy = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_easy.png");
+        this.button_easy = button_easy.getImage();
+        ImageIcon button_normal = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_normal.png");
+        this.button_normal = button_normal.getImage();
+        ImageIcon button_hard = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_hard.png");
+        this.button_hard = button_hard.getImage();
+        ImageIcon button_back = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_back.png");
+        this.button_back = button_back.getImage();
 
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -66,7 +82,7 @@ class GameInterface extends JPanel {
                 double giy = (double)e.getY();
                 //System.out.println(gix);
                 //System.out.println(giy);
-                if (show_buttons==true && gix > xpos && gix < xpos+dx) {
+                if (show_buttons==true && show_settings == false && gix > xpos && gix < xpos+dx) {
                     if (giy > ypos+b1yrel && giy < ypos+b1yrel+dy) {
                         buttonStart();
                     } else if (giy > ypos+b2yrel && giy < ypos+b2yrel+dy) {
@@ -74,22 +90,35 @@ class GameInterface extends JPanel {
                     } else if (giy > ypos+b3yrel && giy < ypos+b3yrel+dy) {
                         buttonExit();
                     }
-                } else if (show_buttons==false) {
+                } else if (show_buttons==true && show_settings == true && gix > xpos && gix < xpos+dx) {
+                    if (giy > ypos+b1yrel && giy < ypos+b1yrel+dy) {
+                        menu.difficulty = 0;
+                        System.out.println(menu.difficulty);
+                    } else if (giy > ypos+b2yrel && giy < ypos+b2yrel+dy) {
+                        menu.difficulty = 1;
+                        System.out.println(menu.difficulty);
+                    } else if (giy > ypos+b3yrel && giy < ypos+b3yrel+dy) {
+                        menu.difficulty = 2;
+                        System.out.println(menu.difficulty);
+                    }else if (giy > ypos+b4yrel && giy < ypos+b4yrel+dy) {
+                        buttonBack();
+                    }
+                }else if (show_buttons==false && show_settings == false) {
                     if (gix > 525 && gix < 705 && giy > 220 && giy < 350) {
                         highlight = 1;
-                        menu.labelmenupanel.infoLabel.setText("Zamek|L:"+menu.buildingResources.castle.level+" W:"+menu.buildingResources.castle.woodcost+" S:"+menu.buildingResources.castle.stonecost+" G:"+menu.buildingResources.castle.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Zamek |L:"+menu.buildingResources.castle.level+" W:"+menu.buildingResources.castle.woodcost+" S:"+menu.buildingResources.castle.stonecost+" G:"+menu.buildingResources.castle.goldcost);
                     }
                     else if (gix > 270 && gix < 420 && giy > 230 && giy < 360){
                         highlight = 2;
-                        menu.labelmenupanel.infoLabel.setText("Tartak|L:"+menu.buildingResources.sawmill.level+" W:"+menu.buildingResources.sawmill.woodcost+" S:"+menu.buildingResources.sawmill.stonecost+" G:"+menu.buildingResources.sawmill.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Tartak |L:"+menu.buildingResources.sawmill.level+" W:"+menu.buildingResources.sawmill.woodcost+" S:"+menu.buildingResources.sawmill.stonecost+" G:"+menu.buildingResources.sawmill.goldcost);
                     }
                     else if (gix > 750 && gix < 930 && giy > 100 && giy < 230){
                         highlight = 3;
-                        menu.labelmenupanel.infoLabel.setText("Kamieniołom|L:"+menu.buildingResources.stonemine.level+" W:"+menu.buildingResources.stonemine.woodcost+" S:"+menu.buildingResources.stonemine.stonecost+" G:"+menu.buildingResources.stonemine.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Kamieniołom |L:"+menu.buildingResources.stonemine.level+" W:"+menu.buildingResources.stonemine.woodcost+" S:"+menu.buildingResources.stonemine.stonecost+" G:"+menu.buildingResources.stonemine.goldcost);
                     }
                     else if (gix > 830 && gix < 1020 && giy > 360 && giy < 500){
                         highlight = 4;
-                        menu.labelmenupanel.infoLabel.setText("Kopalnia złota|L:"+menu.buildingResources.goldmine.level+" W:"+menu.buildingResources.goldmine.woodcost+" S:"+menu.buildingResources.goldmine.stonecost+" G:"+menu.buildingResources.goldmine.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Kopalnia złota |L:"+menu.buildingResources.goldmine.level+" W:"+menu.buildingResources.goldmine.woodcost+" S:"+menu.buildingResources.goldmine.stonecost+" G:"+menu.buildingResources.goldmine.goldcost);
                     }
                     else{
                         highlight = 0;
@@ -112,27 +141,38 @@ class GameInterface extends JPanel {
     }
     
     void buttonSettings() {
-        
+        this.show_settings = true;
+        this.repaint();
     }
     
     void buttonExit() {
         System.exit(0);
     }
+    
+    void buttonBack(){
+        this.show_settings = false;
+        repaint();
+    }
 
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        //g2.setColor(new Color(212, 217,219));               //kolor panelu
-        //g2.fillRect(0, 0, this.x, this.y);                     //kolorowanie panelu po włączeniu
-        if(this.show_buttons == true){
+        if (this.show_buttons == true && this.show_settings == true){
             g2.drawImage(this.map_blur, 0, 0, null);     //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
-            g2.drawImage(logo, x/4, y/24, null);              //logo gry na ekranie startowym
+            g2.drawImage(this.logo, x/4, y/24, null);              //logo gry na ekranie startowym
+            g2.drawImage(this.button_easy, (int)xpos, (int)(ypos+b1yrel), null);   //przycisk easy po settings
+            g2.drawImage(this.button_normal, (int)xpos, (int)(ypos+b2yrel), null); //przycisk normal po settings
+            g2.drawImage(this.button_hard, (int)xpos, (int)(ypos+b3yrel), null);   //przycisk hard po settings
+            g2.drawImage(this.button_back, (int)xpos, (int)(ypos+b4yrel), null);   //przycisk powrotu
+        }else if(this.show_buttons == true && this.show_settings == false){
+            g2.drawImage(this.map_blur, 0, 0, null);     //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
+            g2.drawImage(this.logo, x/4, y/24, null);              //logo gry na ekranie startowym
             g2.drawImage(this.button_start, (int)xpos, (int)(ypos+b1yrel), null);     //przycisk start
             g2.drawImage(this.button_settings, (int)xpos, (int)(ypos+b2yrel), null);  //przycisk settings
             g2.drawImage(this.button_exit, (int)xpos, (int)(ypos+b3yrel), null);      //przycisk exit
-        } else if(this.show_buttons == false){
+        } else if(this.show_buttons == false && this.show_settings == false){
             g2.drawImage(this.background, 0, 0, null);   //tło gry po kliknięciu start
-            g2.setStroke(new BasicStroke(3));
+            g2.setStroke(new BasicStroke(2));
             if (this.highlight == 1) {//zamek = 1
                 g2.drawLine(525, 220, 705, 220);
                 g2.drawLine(525, 220, 525, 350);
