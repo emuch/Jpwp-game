@@ -16,12 +16,12 @@ class LabelMenuPanel extends JLabel{
         this.menu = menu;
         this.x = menu.x;
         this.y = menu.y;
-        this.dateLabel = new JLabel("Tura:1 Tydzień:1 1-1263");
+        this.dateLabel = new JLabel("Tura: 1 Tydzień: 1 1-1263");
         this.dateLabel.setLocation(0,0);                            //lokalizacja JLabela z turami
         this.dateLabel.setSize((int) (x*0.15),(int) (y*(0.05)));         //wielkość JLabela z turami
         this.dateLabel.setHorizontalAlignment(JLabel.CENTER);            //Centrowanie horyzontalne
         this.dateLabel.setVerticalAlignment(JLabel.CENTER);              //Centrowanie wertykalne
-        //this.dateLabel.setFont(Font("Verdana"),Font.PLAIN, 14);
+        this.dateLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 
         this.resourceLabel = new JLabel();
         this.resourceLabel.setLocation((int) (x*0.15),0);                 //lokalizacja JLabela z zasobami

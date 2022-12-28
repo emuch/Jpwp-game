@@ -38,9 +38,10 @@ class Menu {
         menu.add(menupanel);
         menu.add(gameinterface);
         menu.add(labelmenupanel);
-
+        
         this.difficulty = 1;
         setGame();
+        
         Thread thread = new Muzyka_dziala();
         thread.start();
         menu.setVisible(true);
@@ -53,7 +54,7 @@ class Menu {
     }
 
     void setGame() {
-        this.labelmenupanel.dateLabel.setText("Tura:1 Tydzień:1 1-1263");
+        this.labelmenupanel.dateLabel.setText("Tura: 1 Tydzień: 1 1-1263");
         this.labelmenupanel.resourceLabel.setText("");
         this.labelmenupanel.eventLabel.setText("Brak wydarzeń");
         this.labelmenupanel.infoLabel.setText("Brak wyboru");

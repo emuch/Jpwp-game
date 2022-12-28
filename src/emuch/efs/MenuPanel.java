@@ -127,13 +127,13 @@ class MenuPanel extends JPanel{
         Graphics2D g2 = (Graphics2D) g;
         if(this.menu.gameinterface.show_buttons == false){
             g2.setColor(new Color(212, 217,219));                   //kolor panelu
-            g2.fillRect(0, 0, this.x,(int) this.y);                   //kolorowanie panelu po kliknięciu start
+            g2.fillRect(0, 0, this.x, (int) this.y);                   //kolorowanie panelu po kliknięciu start
             g2.drawImage(this.button_upgrade, 0, 0, null);  //przycisk menu
             g2.drawImage(this.button_menu, (int)xm, 0, null);  //przycisk menu
-            g2.drawImage(this.button_turn,(int) xt,0, null);   //przycisk turn
+            g2.drawImage(this.button_turn, (int) xt,0, null);   //przycisk turn
          }else if(this.menu.gameinterface.show_buttons == true){
             g2.setColor(new Color(212, 217,219));                   //kolor panelu
-            g2.fillRect(0, 0, this.x,(int) this.y);                   //kolorowanie panelu dla włączenia gry
+            g2.fillRect(0, 0, this.x, (int) this.y);                   //kolorowanie panelu dla włączenia gry
          }
     }
 }
