@@ -1,24 +1,34 @@
 package emuch.efs;
 
 import javax.swing.JFrame;
-//import java.io.File;
+import javax.swing.JOptionPane;
+import java.io.File;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 class Menu {
     JFrame menu;
     GameInterface gameinterface;
     MenuPanel menupanel;
     LabelMenuPanel labelmenupanel;
+    Music music;
     RoundCounter rcounter;
     BuildingResources buildingResources;
     int difficulty;
     int x = 1280;
     int y = 720;
-    //String indirectPathimages;
-    //String indirectPathsounds;
-    //Drawing drawing;
+    Image game_icon;
+
+    String imagepath;
     
     Menu() throws Exception {
+        this.imagepath = new File("images").getCanonicalPath().toString();
+
+        ImageIcon game_icon = new ImageIcon(this.imagepath + "/button_turn.png");  //TO DO ICON
+        //System.out.println(imagepath); //sprawdzenie sciezki wzglednej
+
         menu = new JFrame("Empire from scratch");
+        menu.setIconImage(game_icon.getImage());
         menu.setSize(x,y);
         menu.setResizable(false);
         menu.setLayout(null);
@@ -34,29 +44,26 @@ class Menu {
         gameinterface = new GameInterface(this);
         gameinterface.setSize(x, y*95/100);
         gameinterface.setLocation(0, y*5/100);
-        
+
         menu.add(menupanel);
         menu.add(gameinterface);
         menu.add(labelmenupanel);
-        
+
         this.difficulty = 1;
         setGame();
-        
-        Thread thread = new Muzyka_dziala();
-        thread.start();
-        menu.setVisible(true);
 
+        music = new Music();
+        music.playMusic();
         
-        //this.indirectPathimages = new File(App.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getPath() + "/images/";
-        //this.indirectPathimages = new App().getClass().getResource("../images/").toString();
-        //this.indirectPathsounds = new App().getClass().getResource("../../../sounds/").toString();
-        //System.out.println(indirectPathimages + " koniec");
+        menu.setVisible(true);
     }
 
     void setGame() {
         this.labelmenupanel.dateLabel.setText("Tura: 1 Tydzień: 1 1-1263");
-        this.labelmenupanel.resourceLabel.setText("");
-        this.labelmenupanel.eventLabel.setText("Brak wydarzeń");
+        this.labelmenupanel.resourceLabelwood.setText("");
+        this.labelmenupanel.resourceLabelgold.setText("");
+        this.labelmenupanel.resourceLabelstone.setText("");
+        //this.labelmenupanel.eventLabel.setText("Brak wydarzeń");
         this.labelmenupanel.infoLabel.setText("Brak wyboru");
         this.rcounter = new RoundCounter(this); //licznik tur
         try {
@@ -67,12 +74,8 @@ class Menu {
 
     void defeat() {
         setGame();
-        this.labelmenupanel.eventLabel.setText("Zbankrutowałeś. Zacznij od nowa!");
-    }
-}
-
-class Muzyka_dziala extends Thread {
-    public void run() {
-        Music.playMusic();
+        //this.labelmenupanel.eventLabel.setText("Zbankrutowałeś. Zacznij od nowa!");
+        JFrame okno = new JFrame();
+        JOptionPane.showMessageDialog(okno, "Zbankrutowałeś. Zacznij od nowa!");
     }
 }

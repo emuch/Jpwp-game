@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-//import javax.naming.spi.DirStateFactory;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -55,33 +54,33 @@ class GameInterface extends JPanel {
         this.show_buttons = true;        //widoczność przycisków głównego menu
         this.show_settings = false;      //widoczność przycisków settings
         
-        ImageIcon map_blur = new ImageIcon(/*menu.indirectPathimages + */"C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/map_blur.png");
+        ImageIcon map_blur = new ImageIcon(this.menu.imagepath + "/map_blur.png");
         this.map_blur = map_blur.getImage();
-        ImageIcon logo = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/logo.png");
+        ImageIcon logo = new ImageIcon(this.menu.imagepath + "/logo.png");
         this.logo = logo.getImage();
-        ImageIcon button_start = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_start.png");
+        ImageIcon button_start = new ImageIcon(this.menu.imagepath + "/button_start.png");
         this.button_start = button_start.getImage();
-        ImageIcon button_settings = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_settings.png");
+        ImageIcon button_settings = new ImageIcon(this.menu.imagepath + "/button_settings.png");
         this.button_settings = button_settings.getImage();
-        ImageIcon button_exit = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_exit.png");
+        ImageIcon button_exit = new ImageIcon(this.menu.imagepath + "/button_exit.png");
         this.button_exit = button_exit.getImage();
-        ImageIcon background = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/map.png");
+        ImageIcon background = new ImageIcon(this.menu.imagepath + "/map.png");
         this.background = background.getImage();
-        ImageIcon button_easy = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_easy.png");
+        ImageIcon button_easy = new ImageIcon(this.menu.imagepath + "/button_easy.png");
         this.button_easy = button_easy.getImage();
-        ImageIcon button_normal = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_normal.png");
+        ImageIcon button_normal = new ImageIcon(this.menu.imagepath + "/button_normal.png");
         this.button_normal = button_normal.getImage();
-        ImageIcon button_hard = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_hard.png");
+        ImageIcon button_hard = new ImageIcon(this.menu.imagepath + "/button_hard.png");
         this.button_hard = button_hard.getImage();
-        ImageIcon button_back = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_back.png");
+        ImageIcon button_back = new ImageIcon(this.menu.imagepath + "/button_back.png");
         this.button_back = button_back.getImage();
 
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 double gix = (double)e.getX();
                 double giy = (double)e.getY();
-                //System.out.println(gix);
-                //System.out.println(giy);
+                //System.out.println(gix);   //pozycja kursora x
+                //System.out.println(giy);   //pozycja kursora y
                 if (show_buttons==true && show_settings == false && gix > xpos && gix < xpos+dx) {
                     if (giy > ypos+b1yrel && giy < ypos+b1yrel+dy) {
                         buttonStart();
@@ -90,37 +89,40 @@ class GameInterface extends JPanel {
                     } else if (giy > ypos+b3yrel && giy < ypos+b3yrel+dy) {
                         buttonExit();
                     }
-                } else if (show_buttons==true && show_settings == true && gix > xpos && gix < xpos+dx) {
-                    if (giy > ypos+b1yrel && giy < ypos+b1yrel+dy) {
+                } else if (show_buttons==true && show_settings == true && gix > xpos && gix < xpos+dx) { //wybór poziomu trudności z menu
+                    if (giy > ypos+b1yrel && giy < ypos+b1yrel+dy) { //easy
                         menu.difficulty = 0;
-                        System.out.println(menu.difficulty);
-                    } else if (giy > ypos+b2yrel && giy < ypos+b2yrel+dy) {
+                        menu.setGame();
+                        //System.out.println(menu.difficulty);
+                    } else if (giy > ypos+b2yrel && giy < ypos+b2yrel+dy) { //normal
                         menu.difficulty = 1;
-                        System.out.println(menu.difficulty);
-                    } else if (giy > ypos+b3yrel && giy < ypos+b3yrel+dy) {
+                        menu.setGame();
+                        //System.out.println(menu.difficulty);
+                    } else if (giy > ypos+b3yrel && giy < ypos+b3yrel+dy) { //hard
                         menu.difficulty = 2;
-                        System.out.println(menu.difficulty);
-                    }else if (giy > ypos+b4yrel && giy < ypos+b4yrel+dy) {
+                        menu.setGame();
+                        //System.out.println(menu.difficulty);
+                    }else if (giy > ypos+b4yrel && giy < ypos+b4yrel+dy) { //powrót
                         buttonBack();
                     }
-                }else if (show_buttons==false && show_settings == false) {
-                    if (gix > 525 && gix < 705 && giy > 220 && giy < 350) {
+                }else if (show_buttons==false && show_settings == false) {//zaznaczenie konkretnego budynku
+                    if (gix > 525 && gix < 705 && giy > 220 && giy < 350) {//Zamek
                         highlight = 1;
-                        menu.labelmenupanel.infoLabel.setText("Zamek |L:"+menu.buildingResources.castle.level+" W:"+menu.buildingResources.castle.woodcost+" S:"+menu.buildingResources.castle.stonecost+" G:"+menu.buildingResources.castle.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Zamek | Level: "+menu.buildingResources.castle.level+" Wood: "+menu.buildingResources.castle.woodcost+" Stone: "+menu.buildingResources.castle.stonecost+" Gold: "+menu.buildingResources.castle.goldcost);
                     }
-                    else if (gix > 270 && gix < 420 && giy > 230 && giy < 360){
+                    else if (gix > 270 && gix < 420 && giy > 230 && giy < 360){//Tartak
                         highlight = 2;
-                        menu.labelmenupanel.infoLabel.setText("Tartak |L:"+menu.buildingResources.sawmill.level+" W:"+menu.buildingResources.sawmill.woodcost+" S:"+menu.buildingResources.sawmill.stonecost+" G:"+menu.buildingResources.sawmill.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Tartak | Level: "+menu.buildingResources.sawmill.level+" Wood: "+menu.buildingResources.sawmill.woodcost+" Stone: "+menu.buildingResources.sawmill.stonecost+" Gold: "+menu.buildingResources.sawmill.goldcost);
                     }
-                    else if (gix > 750 && gix < 930 && giy > 100 && giy < 230){
+                    else if (gix > 750 && gix < 930 && giy > 100 && giy < 230){//Kamieniołom
                         highlight = 3;
-                        menu.labelmenupanel.infoLabel.setText("Kamieniołom |L:"+menu.buildingResources.stonemine.level+" W:"+menu.buildingResources.stonemine.woodcost+" S:"+menu.buildingResources.stonemine.stonecost+" G:"+menu.buildingResources.stonemine.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Kamieniołom | Level: "+menu.buildingResources.stonemine.level+" Wood: "+menu.buildingResources.stonemine.woodcost+" Stone: "+menu.buildingResources.stonemine.stonecost+" Gold: "+menu.buildingResources.stonemine.goldcost);
                     }
-                    else if (gix > 830 && gix < 1020 && giy > 360 && giy < 500){
+                    else if (gix > 830 && gix < 1020 && giy > 360 && giy < 500){//Kopalnia złota
                         highlight = 4;
-                        menu.labelmenupanel.infoLabel.setText("Kopalnia złota |L:"+menu.buildingResources.goldmine.level+" W:"+menu.buildingResources.goldmine.woodcost+" S:"+menu.buildingResources.goldmine.stonecost+" G:"+menu.buildingResources.goldmine.goldcost);
+                        menu.labelmenupanel.infoLabel.setText("Kopalnia złota | Level: "+menu.buildingResources.goldmine.level+" Wood: "+menu.buildingResources.goldmine.woodcost+" Stone: "+menu.buildingResources.goldmine.stonecost+" Gold: "+menu.buildingResources.goldmine.goldcost);
                     }
-                    else{
+                    else{//brak wyboru
                         highlight = 0;
                         menu.labelmenupanel.infoLabel.setText("Nie wybrano");
                     }
@@ -132,8 +134,10 @@ class GameInterface extends JPanel {
 
     void buttonStart() {
         this.menu.labelmenupanel.dateLabel.setVisible(true);
-        this.menu.labelmenupanel.resourceLabel.setVisible(true);
-        this.menu.labelmenupanel.eventLabel.setVisible(true);
+        this.menu.labelmenupanel.resourceLabelwood.setVisible(true);
+        this.menu.labelmenupanel.resourceLabelstone.setVisible(true);
+        this.menu.labelmenupanel.resourceLabelgold.setVisible(true);
+        //this.menu.labelmenupanel.eventLabel.setVisible(true);
         this.menu.labelmenupanel.infoLabel.setVisible(true);
         this.show_buttons = false;
         this.repaint();
@@ -158,20 +162,20 @@ class GameInterface extends JPanel {
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         if (this.show_buttons == true && this.show_settings == true){
-            g2.drawImage(this.map_blur, 0, 0, null);     //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
+            g2.drawImage(this.map_blur, 0, 0, null);          //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
             g2.drawImage(this.logo, x/4, y/24, null);              //logo gry na ekranie startowym
             g2.drawImage(this.button_easy, (int)xpos, (int)(ypos+b1yrel), null);   //przycisk easy po settings
             g2.drawImage(this.button_normal, (int)xpos, (int)(ypos+b2yrel), null); //przycisk normal po settings
             g2.drawImage(this.button_hard, (int)xpos, (int)(ypos+b3yrel), null);   //przycisk hard po settings
             g2.drawImage(this.button_back, (int)xpos, (int)(ypos+b4yrel), null);   //przycisk powrotu
         }else if(this.show_buttons == true && this.show_settings == false){
-            g2.drawImage(this.map_blur, 0, 0, null);     //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
+            g2.drawImage(this.map_blur, 0, 0, null);          //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu
             g2.drawImage(this.logo, x/4, y/24, null);              //logo gry na ekranie startowym
             g2.drawImage(this.button_start, (int)xpos, (int)(ypos+b1yrel), null);     //przycisk start
             g2.drawImage(this.button_settings, (int)xpos, (int)(ypos+b2yrel), null);  //przycisk settings
             g2.drawImage(this.button_exit, (int)xpos, (int)(ypos+b3yrel), null);      //przycisk exit
-        } else if(this.show_buttons == false && this.show_settings == false){
-            g2.drawImage(this.background, 0, 0, null);   //tło gry po kliknięciu start
+        }else if(this.show_buttons == false && this.show_settings == false){
+            g2.drawImage(this.background, 0, 0, null);        //tło gry po kliknięciu start
             g2.setStroke(new BasicStroke(2));
             if (this.highlight == 1) {//zamek = 1
                 g2.drawLine(525, 220, 705, 220);

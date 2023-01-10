@@ -23,24 +23,24 @@ class MenuPanel extends JPanel{
     Image button_upgrade;
     Image button_menu;
     Image button_turn;
-    
+
     MenuPanel(Menu menu) {
         this.menu = menu;
         this.x = menu.x;         //rozmiar x górnego panelu
         this.y = menu.y;         //rozmiar y górnego panelu
         this.xm = 0.2*x;         //pozycja x przycisku panelu od lewej (1152)
         this.ym = 0;             //pozycja y przycisku panelu od góry (0)
-        this.xt = 0.1*x;         //pozycja x przucisku tury (TO DO liczba)
+        this.xt = 0.1*x;         //pozycja x przycisku tury (TO DO liczba)
         this.dx = x*(0.1);       //rozmiar 2*x przycisku panelu
         this.dy = y*(0.05);      //rozmiar y przycisku panelu
         
-        ImageIcon button_upgrade = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_upgrade.png");
+        ImageIcon button_upgrade = new ImageIcon(this.menu.imagepath + "/button_upgrade.png");
         this.button_upgrade = button_upgrade.getImage();
-        ImageIcon button_menu = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_menu.png");
+        ImageIcon button_menu = new ImageIcon(this.menu.imagepath + "/button_menu.png");
         this.button_menu = button_menu.getImage();
-        ImageIcon button_turn = new ImageIcon("C:/Users/Emus/Desktop/Programy Studia/JAVA JDK/Empirefromscratch/images/button_turn.png");
+        ImageIcon button_turn = new ImageIcon(this.menu.imagepath + "/button_turn.png");
         this.button_turn = button_turn.getImage();
-        
+
         this.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 double gix = (double)e.getX();
@@ -64,21 +64,23 @@ class MenuPanel extends JPanel{
     void buttonUpgrade() {
         if (this.menu.gameinterface.highlight == 1) {
             this.menu.buildingResources.castle.upgrade();
-            this.menu.labelmenupanel.infoLabel.setText("Zamek|L:"+menu.buildingResources.castle.level+" W:"+menu.buildingResources.castle.woodcost+" S:"+menu.buildingResources.castle.stonecost+" G:"+menu.buildingResources.castle.goldcost);
+            this.menu.labelmenupanel.infoLabel.setText("Zamek |Level: "+menu.buildingResources.castle.level+" Wood: "+menu.buildingResources.castle.woodcost+" Stone: "+menu.buildingResources.castle.stonecost+" Gold: "+menu.buildingResources.castle.goldcost);
         }
         if (this.menu.gameinterface.highlight == 2) {
             this.menu.buildingResources.sawmill.upgrade();
-            this.menu.labelmenupanel.infoLabel.setText("Tartak|L:"+menu.buildingResources.sawmill.level+" W:"+menu.buildingResources.sawmill.woodcost+" S:"+menu.buildingResources.sawmill.stonecost+" G:"+menu.buildingResources.sawmill.goldcost);
+            this.menu.labelmenupanel.infoLabel.setText("Tartak |Level: "+menu.buildingResources.sawmill.level+" Wood: "+menu.buildingResources.sawmill.woodcost+" Stone: "+menu.buildingResources.sawmill.stonecost+" Gold: "+menu.buildingResources.sawmill.goldcost);
         }
         if (this.menu.gameinterface.highlight == 3) {
             this.menu.buildingResources.stonemine.upgrade();
-            this.menu.labelmenupanel.infoLabel.setText("Kamieniołom|L:"+menu.buildingResources.stonemine.level+" W:"+menu.buildingResources.stonemine.woodcost+" S:"+menu.buildingResources.stonemine.stonecost+" G:"+menu.buildingResources.stonemine.goldcost);
+            this.menu.labelmenupanel.infoLabel.setText("Kamieniołom | Level: "+menu.buildingResources.stonemine.level+" Wood: "+menu.buildingResources.stonemine.woodcost+" Stone: "+menu.buildingResources.stonemine.stonecost+" Gold: "+menu.buildingResources.stonemine.goldcost);
         }
         if (this.menu.gameinterface.highlight == 4) {
             this.menu.buildingResources.goldmine.upgrade();
-            this.menu.labelmenupanel.infoLabel.setText("Kopalnia złota|L:"+menu.buildingResources.goldmine.level+" W:"+menu.buildingResources.goldmine.woodcost+" S:"+menu.buildingResources.goldmine.stonecost+" G:"+menu.buildingResources.goldmine.goldcost);
+            this.menu.labelmenupanel.infoLabel.setText("Kopalnia złota | Level: "+menu.buildingResources.goldmine.level+" Wood: "+menu.buildingResources.goldmine.woodcost+" Stone: "+menu.buildingResources.goldmine.stonecost+" Gold: "+menu.buildingResources.goldmine.goldcost);
         }
-        this.menu.labelmenupanel.resourceLabel.setText("D: "+this.menu.buildingResources.wood+"+"+this.menu.buildingResources.woodGain+" S: "+this.menu.buildingResources.stone+"+"+this.menu.buildingResources.stoneGain+" G: "+this.menu.buildingResources.gold+"+"+this.menu.buildingResources.goldGain);
+        this.menu.labelmenupanel.resourceLabelwood.setText("W: "+this.menu.buildingResources.wood+"+"+this.menu.buildingResources.woodGain);
+        this.menu.labelmenupanel.resourceLabelstone.setText("S: "+this.menu.buildingResources.stone+"+"+this.menu.buildingResources.stoneGain);
+        this.menu.labelmenupanel.resourceLabelgold.setText("G: "+this.menu.buildingResources.gold+"+"+this.menu.buildingResources.goldGain);
         if (this.menu.buildingResources.wood < 0 || this.menu.buildingResources.stone < 0 || this.menu.buildingResources.gold < 0) {
             this.menu.defeat();
         }
@@ -86,8 +88,10 @@ class MenuPanel extends JPanel{
     
     void buttonMenu() {
         this.menu.labelmenupanel.dateLabel.setVisible(false);
-        this.menu.labelmenupanel.resourceLabel.setVisible(false);
-        this.menu.labelmenupanel.eventLabel.setVisible(false);
+        this.menu.labelmenupanel.resourceLabelwood.setVisible(false);
+        this.menu.labelmenupanel.resourceLabelstone.setVisible(false);
+        this.menu.labelmenupanel.resourceLabelgold.setVisible(false);
+        //this.menu.labelmenupanel.eventLabel.setVisible(false);
         this.menu.labelmenupanel.infoLabel.setVisible(false);
         this.menu.gameinterface.show_buttons = true;
         this.repaint();
@@ -116,7 +120,9 @@ class MenuPanel extends JPanel{
         if(this.menu.buildingResources.goldGain>99) {
             this.menu.buildingResources.goldGain = 99;
         }
-        this.menu.labelmenupanel.resourceLabel.setText("D: "+this.menu.buildingResources.wood+"+"+this.menu.buildingResources.woodGain+" S: "+this.menu.buildingResources.stone+"+"+this.menu.buildingResources.stoneGain+" G: "+this.menu.buildingResources.gold+"+"+this.menu.buildingResources.goldGain);
+        this.menu.labelmenupanel.resourceLabelwood.setText("W: "+this.menu.buildingResources.wood+"+"+this.menu.buildingResources.woodGain);
+        this.menu.labelmenupanel.resourceLabelstone.setText("S: "+this.menu.buildingResources.stone+"+"+this.menu.buildingResources.stoneGain);
+        this.menu.labelmenupanel.resourceLabelgold.setText("G: "+this.menu.buildingResources.gold+"+"+this.menu.buildingResources.goldGain);
         if (this.menu.buildingResources.wood < 0 || this.menu.buildingResources.stone < 0 || this.menu.buildingResources.gold < 0) {
             this.menu.defeat();
         }
@@ -126,13 +132,13 @@ class MenuPanel extends JPanel{
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         if(this.menu.gameinterface.show_buttons == false){
-            g2.setColor(new Color(212, 217,219));                   //kolor panelu
+            g2.setColor(new Color(238, 238,238));                   //kolor panelu
             g2.fillRect(0, 0, this.x, (int) this.y);                   //kolorowanie panelu po kliknięciu start
-            g2.drawImage(this.button_upgrade, 0, 0, null);  //przycisk menu
-            g2.drawImage(this.button_menu, (int)xm, 0, null);  //przycisk menu
+            g2.drawImage(this.button_upgrade, 0, 0, null);  //przycisk upgrade
             g2.drawImage(this.button_turn, (int) xt,0, null);   //przycisk turn
+            g2.drawImage(this.button_menu, (int)xm, 0, null);  //przycisk menu
          }else if(this.menu.gameinterface.show_buttons == true){
-            g2.setColor(new Color(212, 217,219));                   //kolor panelu
+            g2.setColor(new Color(238, 238,238));                   //kolor panelu
             g2.fillRect(0, 0, this.x, (int) this.y);                   //kolorowanie panelu dla włączenia gry
          }
     }
