@@ -43,7 +43,9 @@ class BuildingResources {
             default:
                 throw new Exception("Invalid difficulty");
         }
-        this.menu.labelmenupanel.resourceLabel.setText("D: "+wood+"+"+woodGain+" S: "+stone+"+"+stoneGain+" G: "+gold+"+"+goldGain);
+        this.menu.labelmenupanel.resourceLabelwood.setText("W: "+wood+"+"+woodGain);
+        this.menu.labelmenupanel.resourceLabelstone.setText("S: "+stone+"+"+stoneGain);
+        this.menu.labelmenupanel.resourceLabelgold.setText("G: "+gold+"+"+goldGain);
         castle = new Castle(menu);
         sawmill = new Sawmill(menu);
         stonemine = new Stonemine(menu);

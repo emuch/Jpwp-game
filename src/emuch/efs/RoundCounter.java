@@ -13,7 +13,7 @@ class RoundCounter {
         this.time++;
     }
     void check_events() {
-        this.menu.labelmenupanel.eventLabel.setText("Brak wydarzeń");
+        //this.menu.labelmenupanel.eventLabel.setText("Brak wydarzeń");
         boolean was_loud = false;
         for (Event event : this.elist.list) {
             if (event.loud && was_loud)
