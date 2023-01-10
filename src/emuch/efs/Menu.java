@@ -24,7 +24,7 @@ class Menu {
     Menu() throws Exception {
         this.imagepath = new File("images").getCanonicalPath().toString();
 
-        ImageIcon game_icon = new ImageIcon(this.imagepath + "/button_turn.png");  //TO DO ICON
+        ImageIcon game_icon = new ImageIcon(this.imagepath + "/game_icon.png");  //TO DO ICON
         //System.out.println(imagepath); //sprawdzenie sciezki wzglednej
 
         menu = new JFrame("Empire from scratch");
