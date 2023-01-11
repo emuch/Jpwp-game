@@ -36,7 +36,7 @@ class LabelMenuPanel extends JLabel{
         this.dateLabel.setSize((int) (x*0.15),(int) (y*(0.05)));         //wielkość JLabela z turami
         this.dateLabel.setHorizontalAlignment(JLabel.CENTER);            //Centrowanie horyzontalne
         this.dateLabel.setVerticalAlignment(JLabel.CENTER);              //Centrowanie wertykalne
-        this.dateLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        this.dateLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 
         this.resourceLabelwood = new JLabel();
         this.resourceLabelwood.setLocation((int) (x*0.15),0);                 //lokalizacja JLabela z zasobami drewna
