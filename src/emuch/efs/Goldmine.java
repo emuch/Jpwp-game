@@ -1,7 +1,10 @@
 package emuch.efs;
-
+/**
+Parametry kopalni zlota
+*/
 class Goldmine extends MapObject{
     Goldmine(Menu menu) {
+        
         super(menu);
         woodcost = 25;
         stonecost = 25;
@@ -9,6 +12,9 @@ class Goldmine extends MapObject{
         multiplier = 2;
     }
     @Override
+    /**
+    Parametry upgrade kopalni zlota
+    */
     void upgrade() {
         level++;
         this.menu.buildingResources.wood-=woodcost;

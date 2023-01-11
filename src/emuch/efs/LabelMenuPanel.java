@@ -6,6 +6,9 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
+/**
+Zdefiniowanie labelow uzywanych do wyswietlania zasobow, daty, informacji o wybranym budynku
+*/
 class LabelMenuPanel extends JLabel{
     Menu menu;
     JLabel dateLabel;

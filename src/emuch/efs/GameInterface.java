@@ -9,6 +9,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.BasicStroke;
 
+/**
+Zmienne i wlasciwosci okna gry
+*/
 class GameInterface extends JPanel {
     MenuPanel menupanel;
     Menu menu;
@@ -132,6 +135,9 @@ class GameInterface extends JPanel {
         });
     }
 
+    /**
+    Przycisk Start
+    */
     void buttonStart() {
         this.menu.labelmenupanel.dateLabel.setVisible(true);
         this.menu.labelmenupanel.resourceLabelwood.setVisible(true);
@@ -144,22 +150,38 @@ class GameInterface extends JPanel {
         this.menu.menupanel.repaint();
     }
     
+    /**
+    Przycisk Settings
+    */
     void buttonSettings() {
         this.show_settings = true;
         this.repaint();
     }
     
+    /**
+    Przycisk Exit
+    */
     void buttonExit() {
         System.exit(0);
     }
     
+    /**
+    Przycisk Back
+    */
     void buttonBack(){
         this.show_settings = false;
         repaint();
     }
 
+    
+    /** 
+     * @param g
+     */
+    /**
+    Rysowanie dolnego panelu w zaleznosci od zmiennych
+    */
     @Override
-    public void paint(Graphics g) {
+    public void paint(Graphics g) { 
         Graphics2D g2 = (Graphics2D) g;
         if (this.show_buttons == true && this.show_settings == true){
             g2.drawImage(this.map_blur, 0, 0, null);          //wyblurowane tło gry po włączeniu gry/kliknięciu przycisku menu

@@ -1,5 +1,7 @@
 package emuch.efs;
-
+/**
+Koszty konkretnych budynkow
+*/
 abstract class MapObject {
     int level;
     int woodcost;
@@ -7,8 +9,11 @@ abstract class MapObject {
     int goldcost;
     int multiplier;
     Menu menu;
-
+    /**
+    Zdefiniowane poziomy budynkow
+    */
     MapObject(Menu menu) {
+        
         level = 1;
         this.menu = menu;
     }

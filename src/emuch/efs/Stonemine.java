@@ -1,7 +1,10 @@
 package emuch.efs;
-
+/**
+Parametry kamieniolomu
+*/
 class Stonemine extends MapObject {
     Stonemine(Menu menu) {
+        
         super(menu);
         woodcost = 25;
         stonecost = 0;
@@ -9,6 +12,9 @@ class Stonemine extends MapObject {
         multiplier = 2;
     }
     @Override
+    /**
+    Parametry upgrade kamieniolomu
+    */
     void upgrade() {
         level++;
         this.menu.buildingResources.wood-=woodcost;

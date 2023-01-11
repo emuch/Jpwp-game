@@ -1,5 +1,7 @@
 package emuch.efs;
-
+/**
+Parametry tartaku
+*/
 class Sawmill extends MapObject{
     Sawmill(Menu menu) {
         super(menu);
@@ -9,6 +11,9 @@ class Sawmill extends MapObject{
         multiplier = 2;
     }
     @Override
+    /**
+    Parametry upgrade tartaku
+    */
     void upgrade() {
         level++;
         this.menu.buildingResources.stone-=stonecost;

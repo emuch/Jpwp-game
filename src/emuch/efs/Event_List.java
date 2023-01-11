@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+Lista eventow dostepnych w grze
+*/
 class Event_List {
     ArrayList<Event> list;
     Event_List(Menu menu) {
@@ -23,6 +26,10 @@ class Event_List {
         list.add(new GoldMineCollapse(menu));//0.3
     }
 }
+
+/**
+Poczatkowy przychod zasobow co ture
+*/
 class NewResources extends Event{
     NewResources(Menu menu) {
         super(menu);
@@ -39,6 +46,9 @@ class NewResources extends Event{
     }
 }
 
+/**
+Event: Las plonie!
+ */
 class BurningForest extends Event{   //głośny event
     BurningForest(Menu menu) {
         super(menu);
@@ -58,6 +68,9 @@ class BurningForest extends Event{   //głośny event
     }
 }
 
+/**
+Event: Zawalenie kopalni zlota!
+ */
 class GoldMineCollapse extends Event{   //głośny event
     GoldMineCollapse(Menu menu) {
         super(menu);
@@ -78,6 +91,9 @@ class GoldMineCollapse extends Event{   //głośny event
     }
 }
 
+/**
+Event: Wyczerpanie kamieniolomu.
+ */
 class DrainedStoneMine extends Event{   //głośny event
     DrainedStoneMine(Menu menu) {
         super(menu);
@@ -97,6 +113,9 @@ class DrainedStoneMine extends Event{   //głośny event
     }
 }
 
+/**
+Event: Zepsute pily.
+ */
 class SawmillSaw extends Event{   //głośny event
     SawmillSaw(Menu menu) {
         super(menu);
@@ -116,6 +135,9 @@ class SawmillSaw extends Event{   //głośny event
     }
 }
 
+/**
+Event: Umierajace bawoly.
+ */
 class DeadOxMine extends Event{   //głośny event
     DeadOxMine(Menu menu) {
         super(menu);
@@ -136,6 +158,9 @@ class DeadOxMine extends Event{   //głośny event
     }
 }
 
+/**
+Event: Epidemia!
+ */
 class Epidemic extends Event{   //głośny event
     Epidemic(Menu menu) {
         super(menu);
@@ -160,6 +185,9 @@ class Epidemic extends Event{   //głośny event
     }
 }
 
+/**
+Event: Zlodzieje w magazynie!
+ */
 class ThiefsInMagazine extends Event{   //głośny event
     ThiefsInMagazine(Menu menu) {
         super(menu);
@@ -180,6 +208,9 @@ class ThiefsInMagazine extends Event{   //głośny event
     }
 }
 
+/**
+Event: Kieszonkowcy grasuja wszedzie.
+ */
 class ThiefOnStreets extends Event{   //głośny event
     ThiefOnStreets(Menu menu) {
         super(menu);
@@ -199,6 +230,9 @@ class ThiefOnStreets extends Event{   //głośny event
     }
 }
 
+/**
+Event: Strajk w tartaku.
+ */
 class StrikeSawmill extends Event{   //głośny event
     StrikeSawmill(Menu menu) {
         super(menu);
@@ -219,6 +253,9 @@ class StrikeSawmill extends Event{   //głośny event
     }
 }
 
+/**
+Event: Strajk w kamieniolomie.
+ */
 class StrikeStonemine extends Event{   //głośny event
     StrikeStonemine(Menu menu) {
         super(menu);
@@ -239,6 +276,9 @@ class StrikeStonemine extends Event{   //głośny event
     }
 }
 
+/**
+Event: Strajk w kopalni zlota.
+ */
 class StrikeGoldmine extends Event{   //głośny event
     StrikeGoldmine(Menu menu) {
         super(menu);
@@ -258,6 +298,9 @@ class StrikeGoldmine extends Event{   //głośny event
     }
 }
 
+/**
+Event: Bandyci z pobliskich gor.
+ */
 class BanditsStonemine extends Event{   //głośny event
     BanditsStonemine(Menu menu) {
         super(menu);
@@ -277,6 +320,9 @@ class BanditsStonemine extends Event{   //głośny event
     }
 }
 
+/**
+Event: Obifte opady.
+ */
 class RiversFlooded extends Event{   //głośny event
     RiversFlooded(Menu menu) {
         super(menu);

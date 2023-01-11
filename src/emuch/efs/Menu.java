@@ -2,10 +2,14 @@ package emuch.efs;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-
+/**
+Klasa glowna, do ktorej sa dodawane Gameinterface, Menupanel, Music i LabelMenuPanel
+*/
 class Menu {
     JFrame menu;
     GameInterface gameinterface;
@@ -20,7 +24,9 @@ class Menu {
     Image game_icon;
 
     String imagepath;
-    
+    /**
+    Elementy okna
+    */
     Menu() throws Exception {
         this.imagepath = new File("images").getCanonicalPath().toString();
 
@@ -56,8 +62,16 @@ class Menu {
         music.playMusic();
         
         menu.setVisible(true);
+        
+        menu.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
     }
-
+    /**
+    Ustawienie poczatkowych zasobow, daty w zaleznosci od trudnosci
+    */
     void setGame() {
         this.labelmenupanel.dateLabel.setText("Tura: 1 Tydzień: 1 1-1263");
         this.labelmenupanel.resourceLabelwood.setText("");
@@ -71,7 +85,9 @@ class Menu {
         } catch (Exception e) {
         }
     }
-
+    /**
+    Efekt porazki w grze
+    */
     void defeat() {
         setGame();
         //this.labelmenupanel.eventLabel.setText("Zbankrutowałeś. Zacznij od nowa!");

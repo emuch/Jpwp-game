@@ -1,5 +1,7 @@
 package emuch.efs;
-
+/**
+Wybor surowcow w zaleznosci od poziomu trudnosci
+*/
 class BuildingResources {
     int wood;
     int stone;
@@ -12,7 +14,7 @@ class BuildingResources {
     MapObject stonemine;
     MapObject goldmine;
     Menu menu;
-
+    
     BuildingResources(Menu menu) throws Exception {
         this.menu = menu;
         switch(menu.difficulty){

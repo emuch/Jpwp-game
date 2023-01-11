@@ -8,7 +8,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+/**
+Gorny panel gry, na ktorym sa widoczne wszystkie zasoby i informacje
+ */
 class MenuPanel extends JPanel{
     Menu menu;
     LabelMenuPanel dateLabel;
@@ -23,7 +25,9 @@ class MenuPanel extends JPanel{
     Image button_upgrade;
     Image button_menu;
     Image button_turn;
-
+    /**
+    Parametry MenuPanel - Panel gorny gry
+    */
     MenuPanel(Menu menu) {
         this.menu = menu;
         this.x = menu.x;         //rozmiar x górnego panelu
@@ -60,7 +64,9 @@ class MenuPanel extends JPanel{
         });
         this.setVisible(true);
     }
-
+    /**
+    Dzialanie przycisku button_upgrade
+    */
     void buttonUpgrade() {
         if (this.menu.gameinterface.highlight == 1) {
             this.menu.buildingResources.castle.upgrade();
@@ -85,7 +91,9 @@ class MenuPanel extends JPanel{
             this.menu.defeat();
         }
     }
-    
+    /**
+    Dzialanie przycisku button_menu
+    */
     void buttonMenu() {
         this.menu.labelmenupanel.dateLabel.setVisible(false);
         this.menu.labelmenupanel.resourceLabelwood.setVisible(false);
@@ -97,8 +105,10 @@ class MenuPanel extends JPanel{
         this.repaint();
         this.menu.gameinterface.repaint();
     }
-
-    void buttonTurn() {
+    /**
+    Dzialanie przycisku button_turn
+    */
+    void buttonTurn() {  
         this.menu.rcounter.advance();
         this.menu.labelmenupanel.dateLabel.setText("Tura: " + Integer.toString(this.menu.rcounter.returnTurn()) + " Tydzień: " + Integer.toString(this.menu.rcounter.returnWeek()) + " " + Integer.toString(this.menu.rcounter.returnMonth()) + "-" + Integer.toString(this.menu.rcounter.returnYear()));
         this.menu.rcounter.check_events();
@@ -128,6 +138,13 @@ class MenuPanel extends JPanel{
         }
     }
     
+    
+    /** 
+     * @param g
+     */
+    /**
+    Rysowanie gornego panelu w zaleznosci od zmiennych
+    */
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;

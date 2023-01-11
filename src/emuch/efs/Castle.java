@@ -1,5 +1,7 @@
 package emuch.efs;
-
+/**
+Parametry zamku
+*/
 class Castle extends MapObject {
     Castle(Menu menu) {
         super(menu);
@@ -8,6 +10,10 @@ class Castle extends MapObject {
         goldcost = 25;
         multiplier = 2;
     }
+    
+    /**
+    Parametry upgrade zamku
+    */
     @Override
     void upgrade() {
         level++;

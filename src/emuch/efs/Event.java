@@ -1,5 +1,7 @@
 package emuch.efs;
-
+/**
+Zdefiniowanie parametrow eventow
+*/
 abstract class Event {
     Menu menu;
     boolean loud;
