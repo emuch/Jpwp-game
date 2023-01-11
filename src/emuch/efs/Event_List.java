@@ -42,6 +42,7 @@ class NewResources extends Event{
 class BurningForest extends Event{   //głośny event
     BurningForest(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -60,6 +61,7 @@ class BurningForest extends Event{   //głośny event
 class GoldMineCollapse extends Event{   //głośny event
     GoldMineCollapse(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -79,6 +81,7 @@ class GoldMineCollapse extends Event{   //głośny event
 class DrainedStoneMine extends Event{   //głośny event
     DrainedStoneMine(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -97,6 +100,7 @@ class DrainedStoneMine extends Event{   //głośny event
 class SawmillSaw extends Event{   //głośny event
     SawmillSaw(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -115,6 +119,7 @@ class SawmillSaw extends Event{   //głośny event
 class DeadOxMine extends Event{   //głośny event
     DeadOxMine(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -134,6 +139,7 @@ class DeadOxMine extends Event{   //głośny event
 class Epidemic extends Event{   //głośny event
     Epidemic(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -157,6 +163,7 @@ class Epidemic extends Event{   //głośny event
 class ThiefsInMagazine extends Event{   //głośny event
     ThiefsInMagazine(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -176,6 +183,7 @@ class ThiefsInMagazine extends Event{   //głośny event
 class ThiefOnStreets extends Event{   //głośny event
     ThiefOnStreets(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -194,6 +202,7 @@ class ThiefOnStreets extends Event{   //głośny event
 class StrikeSawmill extends Event{   //głośny event
     StrikeSawmill(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -213,6 +222,7 @@ class StrikeSawmill extends Event{   //głośny event
 class StrikeStonemine extends Event{   //głośny event
     StrikeStonemine(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -232,6 +242,7 @@ class StrikeStonemine extends Event{   //głośny event
 class StrikeGoldmine extends Event{   //głośny event
     StrikeGoldmine(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -250,6 +261,7 @@ class StrikeGoldmine extends Event{   //głośny event
 class BanditsStonemine extends Event{   //głośny event
     BanditsStonemine(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
@@ -268,6 +280,7 @@ class BanditsStonemine extends Event{   //głośny event
 class RiversFlooded extends Event{   //głośny event
     RiversFlooded(Menu menu) {
         super(menu);
+        this.loud = true;
     }
     @Override
     boolean check_conditions(){
